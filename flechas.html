@@ -1,14 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dibujando con flechas</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px 16px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            color: #111;
+            background: #fff;
+        }
+        main {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        h1 {
+            margin: 0 0 8px;
+        }
+        p {
+            margin: 8px 0 14px;
+            line-height: 1.5;
+        }
+        kbd {
+            display: inline-block;
+            padding: 1px 7px;
+            border: 2px solid #111;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            border: 4px solid #111;
+            border-radius: 8px;
+            background: #fff;
+        }
+        .colores {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 14px 0;
+        }
+        .color {
+            width: 52px;
+            height: 52px;
+            border: 3px solid #111;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .color.elegido {
+            outline: 4px solid #111;
+            outline-offset: 3px;
+        }
+        #borrar {
+            margin-top: 14px;
+            padding: 12px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            border: 3px solid #111;
+            border-radius: 8px;
+            background: #ffe9a8;
+            color: #111;
+            cursor: pointer;
+        }
+        #borrar:hover,
+        #borrar:focus {
+            background: #ffd34d;
+        }
+    </style>
 </head>
 <body>
-    <canvas width="300" height="300" id="area_de_dibujo"></canvas>
-    <p>mueve las flechas del teclado para dibujar</p>
-    <script src="eventos.js"></script>  
- </body>
+    <main>
+        <h1>✏️ Dibuja con las flechas</h1>
+        <p>
+            Mueve el lápiz con las flechas del teclado
+            <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd>.
+            Si mantienes una flecha presionada, la línea sigue avanzando.
+        </p>
+
+        <p><strong>Elige el color del lápiz:</strong> <span id="nombreColor">Azul</span></p>
+        <div class="colores">
+            <button class="color elegido" style="background:#1e5bd8" data-color="#1e5bd8" data-nombre="Azul" aria-label="Azul"></button>
+            <button class="color" style="background:#d62828" data-color="#d62828" data-nombre="Rojo" aria-label="Rojo"></button>
+            <button class="color" style="background:#2a9d3f" data-color="#2a9d3f" data-nombre="Verde" aria-label="Verde"></button>
+            <button class="color" style="background:#f28c18" data-color="#f28c18" data-nombre="Naranja" aria-label="Naranja"></button>
+            <button class="color" style="background:#7b2cbf" data-color="#7b2cbf" data-nombre="Morado" aria-label="Morado"></button>
+            <button class="color" style="background:#111111" data-color="#111111" data-nombre="Negro" aria-label="Negro"></button>
+        </div>
+
+        <canvas width="500" height="500" id="area_de_dibujo"></canvas>
+
+        <button id="borrar">🧽 Borrar dibujo</button>
+    </main>
+    <script src="eventos.js"></script>
+</body>
 </html>
